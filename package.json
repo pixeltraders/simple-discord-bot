@@ -1,0 +1,28 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixeltraders/simple-discord-bot.git"
+  },
+  "author": "rian-sm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pixeltraders/simple-discord-bot/issues"
+  },
+  "homepage": "https://github.com/pixeltraders/simple-discord-bot#readme",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.20.0",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
