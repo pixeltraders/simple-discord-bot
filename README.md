@@ -23,3 +23,6 @@ On dev:
 ```shell
 npm run dev
 ```
+
+### Config Enveroment
+Configure ``.env`` with enveroments variables described on ``.env.example``
