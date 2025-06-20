@@ -1,5 +1,6 @@
 import ChannelService from './service/ChannelService.js';
-import { Client, GatewayIntentBits, PermissionOverwrites } from 'discord.js';
+import RuleService from './service/RuleService.js';
+import { Client, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -12,6 +13,7 @@ const client = new Client({
     ] });
 
 const channelService = new ChannelService(client);
+const ruleService = new RuleService(client);
 
 client.once('ready', () => {
     console.log(`Bot online como ${client.user.tag}`);
@@ -28,7 +30,12 @@ client.on('messageCreate', message => {
 
     if(message.content.startsWith('!channelAccess'))
         channelService.permitirAcesso(message);
-    
+
+    if(message.content.startsWith('!ruleCreate'))
+        ruleService.createRule(message);
+
+    if(message.content.startsWith('!ruleAccess'))
+        ruleService.permitirAcesso(message);
 
     if (message.author.bot) {
         return

@@ -1,4 +1,4 @@
-import { PermissionsBitField } from 'discord.js'
+import { PermissionsBitField, ChannelType } from 'discord.js'
 
 class ChannelService {  
     constructor (client){
@@ -14,7 +14,7 @@ class ChannelService {
         const canal = await message.guild.channels.create(
             {
                 name:`private-${membro.user.username}`,
-                type: 0,
+                type: ChannelType.GuildText,
                 permissionOverwrites:
                 [
                     {
