@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import ChannelService from './service/ChannelService.js';
 import RuleService from './service/RuleService.js';
 import DmService from './service/DmService.js';
+import MessageService from './service/MessageService.js';
 import * as pingCommand from './commands/ping.js';
 import { Client, Collection, Events, GatewayIntentBits, Partials, REST, Routes } from 'discord.js';
 import dotenv from 'dotenv';
@@ -48,6 +49,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 const channelService = new ChannelService(client);
 const ruleService = new RuleService(client);
 const dmService = new DmService(client);
+const messageService = new MessageService(client);
 
 client.once('ready', () => {
     console.log(`Bot online como ${client.user.tag}`);
@@ -77,7 +79,6 @@ client.on('messageCreate', async (message) => {
         if(message.content.startsWith('!url')){
             dmService.url(message)
         }
-
     }
 
     if(message.content.startsWith('!commandsConfig')){
@@ -94,8 +95,7 @@ client.on('messageCreate', async (message) => {
             console.error('❌ Erro ao registrar comandos:', error);
             message.reply('❌ Erro ao registrar comandos')
         }
-    }
-
+    }   
 
     if(message.content.startsWith('!channelPrivate'))
         channelService.createChannel(message);
@@ -108,6 +108,9 @@ client.on('messageCreate', async (message) => {
 
     if(message.content.startsWith('!ruleAccess'))
         ruleService.permitirAcesso(message);
+
+    if(message.content.startsWith('!check'))
+        messageService.UserCheck(message);
 
     if (message.author.bot) {
         return

@@ -36,8 +36,6 @@ class RuleService {
 
         message.reply(`cargo ${cargo} adicionado ao ${membro} `)
     }
-
-    
 }
 
 export default RuleService
